@@ -6,47 +6,87 @@ export default function Generator() {
   const [hashtags, setHashtags] = useState([])
 
   const generateHashtags = () => {
-    const commonHashtags = ['#trending', '#viral', '#content', '#follow', '#like', '#share', '#explore', '#popular']
-    const platformSpecificHashtags = {
-      youtube: [
-        '#youtube', '#youtuber', '#youtubechannel', '#subscribe', '#video',
-        '#youtubevideos', '#youtubers', '#youtubevideo', '#vlog', '#vlogger'
-      ],
-      instagram: [
-        '#instagram', '#instagood', '#instadaily', '#photooftheday', '#instamood',
-        '#instalike', '#instaphoto', '#instafollow', '#picoftheday', '#instagrammers'
-      ],
-      tiktok: [
-        '#tiktok', '#tiktokviral', '#foryou', '#fyp', '#tiktoktrend',
-        '#tiktokdance', '#tiktokmemes', '#tiktokchallenge', '#tiktokers', '#tiktokstar'
-      ]
-    }
-
-    const engagementHashtags = ['#followme', '#likeforlikes', '#followforfollowback', '#viralpost', '#trending2024']
-    
-    const words = content.toLowerCase()
-      .split(' ')
+    // Extract key topics from content
+    const topics = content.toLowerCase()
+      .split(/[.,!? ]+/)
       .filter(word => word.length > 3)
-      .slice(0, 5)
-      .map(word => `#${word.replace(/[^a-zA-Z0-9]/g, '')}`)
+      .map(word => word.replace(/[^a-zA-Z0-9]/g, ''))
+      .filter(Boolean)
 
-    let generatedHashtags = [...commonHashtags, ...engagementHashtags]
+    // Generate content-specific hashtags
+    const contentSpecificTags = topics.map(topic => `#${topic}`)
     
-    if (platform === 'all') {
-      const allPlatformTags = Object.values(platformSpecificHashtags)
-        .flat()
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 8)
-      generatedHashtags = [...generatedHashtags, ...allPlatformTags]
-    } else {
-      generatedHashtags = [...generatedHashtags, ...platformSpecificHashtags[platform]]
+    // Generate variations of content hashtags
+    const variations = topics.flatMap(topic => [
+      `#${topic}content`,
+      `#${topic}photo`,
+      `#${topic}life`,
+      `#${topic}lover`,
+      `#${topic}community`
+    ])
+
+    // Topic-based hashtag categories
+    const topicBasedHashtags = {
+      nature: ['#nature', '#naturephotography', '#naturelovers', '#outdoors', '#wilderness', '#naturelover', '#landscape'],
+      food: ['#food', '#foodie', '#cooking', '#foodphotography', '#foodlover', '#recipe', '#chef', '#delicious'],
+      travel: ['#travel', '#wanderlust', '#adventure', '#travelphotography', '#explore', '#vacation', '#traveling'],
+      fashion: ['#fashion', '#style', '#ootd', '#fashionista', '#outfit', '#fashionstyle', '#trendy'],
+      technology: ['#tech', '#technology', '#innovation', '#digital', '#gadgets', '#software', '#coding'],
+      art: ['#art', '#artist', '#artwork', '#creative', '#design', '#illustration', '#drawing'],
+      fitness: ['#fitness', '#workout', '#gym', '#health', '#training', '#fitnessmotivation', '#healthy'],
+      business: ['#business', '#entrepreneur', '#success', '#marketing', '#startup', '#motivation', '#entrepreneurship']
     }
 
-    generatedHashtags = [...new Set([...generatedHashtags, ...words])]
-      .sort(() => Math.random() - 0.5)
+    // Detect relevant categories based on content
+    const relevantCategories = Object.entries(topicBasedHashtags)
+      .filter(([category]) => 
+        topics.some(topic => 
+          topic.includes(category) || category.includes(topic)
+        )
+      )
+      .map(([_, tags]) => tags)
+      .flat()
+
+    // Platform-specific hashtags
+    const platformHashtags = {
+      youtube: ['#youtube', '#youtuber', '#youtubechannel', '#video', '#youtubevideos'],
+      instagram: ['#instagram', '#instagood', '#instadaily', '#photooftheday', '#instamood'],
+      tiktok: ['#tiktok', '#tiktokviral', '#foryou', '#fyp', '#tiktoktrend']
+    }
+
+    // Engagement hashtags (use fewer)
+    const engagementHashtags = ['#followme', '#likeforlikes', '#viral', '#trending']
+
+    // Combine all hashtags with priority to content-specific ones
+    let allHashtags = [
+      ...contentSpecificTags,
+      ...variations,
+      ...relevantCategories
+    ]
+
+    // Add platform-specific tags
+    if (platform === 'all') {
+      allHashtags = [...allHashtags, ...Object.values(platformHashtags).flat().slice(0, 5)]
+    } else {
+      allHashtags = [...allHashtags, ...(platformHashtags[platform] || [])]
+    }
+
+    // Add a few engagement hashtags
+    allHashtags = [...allHashtags, ...engagementHashtags.slice(0, 3)]
+
+    // Remove duplicates and ensure content relevance
+    const finalHashtags = [...new Set(allHashtags)]
+      .sort((a, b) => {
+        // Prioritize content-specific hashtags
+        const aIsContentSpecific = contentSpecificTags.includes(a)
+        const bIsContentSpecific = contentSpecificTags.includes(b)
+        if (aIsContentSpecific && !bIsContentSpecific) return -1
+        if (!aIsContentSpecific && bIsContentSpecific) return 1
+        return Math.random() - 0.5
+      })
       .slice(0, 25)
 
-    setHashtags(generatedHashtags)
+    setHashtags(finalHashtags)
   }
 
   const copyToClipboard = () => {
