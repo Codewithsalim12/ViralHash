@@ -6,23 +6,46 @@ export default function Generator() {
   const [hashtags, setHashtags] = useState([])
 
   const generateHashtags = () => {
-    const commonHashtags = ['#trending', '#viral', '#content', '#follow']
+    const commonHashtags = ['#trending', '#viral', '#content', '#follow', '#like', '#share', '#explore', '#popular']
     const platformSpecificHashtags = {
-      youtube: ['#youtube', '#youtuber', '#youtubechannel', '#subscribe', '#video'],
-      instagram: ['#instagram', '#instagood', '#instadaily', '#photooftheday', '#instamood'],
-      tiktok: ['#tiktok', '#tiktokviral', '#foryou', '#fyp', '#tiktoktrend']
+      youtube: [
+        '#youtube', '#youtuber', '#youtubechannel', '#subscribe', '#video',
+        '#youtubevideos', '#youtubers', '#youtubevideo', '#vlog', '#vlogger'
+      ],
+      instagram: [
+        '#instagram', '#instagood', '#instadaily', '#photooftheday', '#instamood',
+        '#instalike', '#instaphoto', '#instafollow', '#picoftheday', '#instagrammers'
+      ],
+      tiktok: [
+        '#tiktok', '#tiktokviral', '#foryou', '#fyp', '#tiktoktrend',
+        '#tiktokdance', '#tiktokmemes', '#tiktokchallenge', '#tiktokers', '#tiktokstar'
+      ]
     }
 
-    const words = content.toLowerCase().split(' ').filter(word => word.length > 3)
-    const contentHashtags = words.map(word => `#${word}`)
+    const engagementHashtags = ['#followme', '#likeforlikes', '#followforfollowback', '#viralpost', '#trending2024']
+    
+    const words = content.toLowerCase()
+      .split(' ')
+      .filter(word => word.length > 3)
+      .slice(0, 5)
+      .map(word => `#${word.replace(/[^a-zA-Z0-9]/g, '')}`)
 
-    let generatedHashtags = [...commonHashtags]
+    let generatedHashtags = [...commonHashtags, ...engagementHashtags]
+    
     if (platform === 'all') {
-      generatedHashtags = [...generatedHashtags, ...Object.values(platformSpecificHashtags).flat()]
+      const allPlatformTags = Object.values(platformSpecificHashtags)
+        .flat()
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 8)
+      generatedHashtags = [...generatedHashtags, ...allPlatformTags]
     } else {
       generatedHashtags = [...generatedHashtags, ...platformSpecificHashtags[platform]]
     }
-    generatedHashtags = [...new Set([...generatedHashtags, ...contentHashtags])]
+
+    generatedHashtags = [...new Set([...generatedHashtags, ...words])]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 25)
+
     setHashtags(generatedHashtags)
   }
 

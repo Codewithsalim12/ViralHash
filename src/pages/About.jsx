@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+
 export default function About() {
+  const navigate = useNavigate();
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -88,7 +91,9 @@ export default function About() {
               <p className="text-gray-600 mb-8">
                 Join thousands of content creators who trust HashGen for their social media success.
               </p>
-              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-colors">
+              <button 
+                onClick={() => navigate('/')}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-colors">
                 Try HashGen Now
               </button>
             </div>

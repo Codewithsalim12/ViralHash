@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 const resources = [
   {
     title: 'Growth Strategies',
@@ -41,6 +43,7 @@ const resources = [
 ]
 
 export default function Resources() {
+  const navigate = useNavigate();
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
@@ -101,8 +104,10 @@ export default function Resources() {
           <h2 className="text-3xl font-bold mb-4">Ready to Grow Your Social Media?</h2>
           <p className="text-lg mb-6">
             Use our hashtag generator to create the perfect mix of hashtags for your content
-          </p>
-          <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">
+          </p> 
+          <button 
+            onClick={() => navigate('/')}
+            className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">
             Get Started
           </button>
         </div>

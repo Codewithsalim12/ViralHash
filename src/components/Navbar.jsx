@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink as RouterNavLink } from 'react-router-dom'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -10,10 +10,11 @@ export default function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <img src="/images/hashtag-logo.svg" alt="Logo" className="h-5 w-5 text-white" />
+              <div className="w-9 h-9 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-600 rounded-lg flex items-center justify-center relative group hover:from-violet-600 hover:via-purple-600 hover:to-blue-700 transition-all duration-200">
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-black/5 rounded-lg"></div>
+                <span className="text-white font-bold text-2xl select-none">#</span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-violet-500 via-purple-500 to-blue-600 bg-clip-text text-transparent">
                 HashGen
               </span>
             </Link>
@@ -24,8 +25,10 @@ export default function Navbar() {
             <NavLink to="/">Generator</NavLink>
             <NavLink to="/explore">Explore</NavLink>
             <NavLink to="/trending">Trending</NavLink>
+            <NavLink to="/ai-tools">AI Tools</NavLink>
             <NavLink to="/resources">Resources</NavLink>
             <NavLink to="/about">About</NavLink>
+            <NavLink to="/owner" className="text-violet-500 hover:text-violet-600">Support</NavLink>
           </div>
 
           {/* Mobile Navigation Button */}
@@ -61,8 +64,10 @@ export default function Navbar() {
             <MobileNavLink to="/" onClick={() => setIsMenuOpen(false)}>Generator</MobileNavLink>
             <MobileNavLink to="/explore" onClick={() => setIsMenuOpen(false)}>Explore</MobileNavLink>
             <MobileNavLink to="/trending" onClick={() => setIsMenuOpen(false)}>Trending</MobileNavLink>
+            <MobileNavLink to="/ai-tools" onClick={() => setIsMenuOpen(false)}>AI Tools</MobileNavLink>
             <MobileNavLink to="/resources" onClick={() => setIsMenuOpen(false)}>Resources</MobileNavLink>
             <MobileNavLink to="/about" onClick={() => setIsMenuOpen(false)}>About</MobileNavLink>
+            <MobileNavLink to="/owner" onClick={() => setIsMenuOpen(false)} className="text-violet-500">Support</MobileNavLink>
           </div>
         </div>
       )}
@@ -72,23 +77,35 @@ export default function Navbar() {
 
 function NavLink({ to, children }) {
   return (
-    <Link
+    <RouterNavLink
       to={to}
-      className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-md hover:bg-blue-50 transition-colors"
+      className={({ isActive }) =>
+        `px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+          isActive
+            ? 'text-blue-600 bg-blue-50'
+            : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+        }`
+      }
     >
       {children}
-    </Link>
+    </RouterNavLink>
   )
 }
 
 function MobileNavLink({ to, children, onClick }) {
   return (
-    <Link
+    <RouterNavLink
       to={to}
       onClick={onClick}
-      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+      className={({ isActive }) =>
+        `block px-3 py-2 text-base font-medium rounded-md transition-colors ${
+          isActive
+            ? 'text-blue-600 bg-blue-50'
+            : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+        }`
+      }
     >
       {children}
-    </Link>
+    </RouterNavLink>
   )
 }
