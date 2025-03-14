@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HashGen",
+  "url": "https://hashgen-ruddy.vercel.app/",
+  "description": "Discover, generate, and analyze the best hashtags for social media content across Instagram, TikTok, and YouTube",
+  "applicationCategory": "Social Media Tools",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "keywords": [
+    "hashtag generator",
+    "social media marketing",
+    "content creation",
+    "viral hashtags"
+  ],
+  "creator": {
+    "@type": "Organization",
+    "name": "HashGen Development Team",
+    "url": "https://hashgen-ruddy.vercel.app/"
+  }
+}
