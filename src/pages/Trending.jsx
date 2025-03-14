@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
+import PageHeader from '../components/PageHeader'
 
 const platforms = [
   {
@@ -191,10 +192,12 @@ export default function Trending() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Trending Hashtags</h1>
-        <p className="text-xl text-gray-600">Discover what's popular right now</p>
-      </div>
+      <PageHeader 
+        tag="Real-Time Trends"
+        title="Trending Hashtags"
+        description="Stay ahead of the curve with the most viral and engaging hashtags right now"
+        tagColor="green"
+      />
 
       <div className="flex justify-center mb-8">
         <div className="inline-flex p-1 flex-wrap space-x-1 bg-gray-100 rounded-xl">

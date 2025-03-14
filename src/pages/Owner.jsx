@@ -1,8 +1,24 @@
+import React from 'react'
+import SEO from '../components/SEO'
+import PageHeader from '../components/PageHeader'
 import AboutOwner from '../components/AboutOwner';
 
 export default function Owner() {
   return (
     <div className="container mx-auto px-4 py-8">
+      <SEO 
+        title="Support ViralHash | Help Us Grow"
+        description="Support the development of ViralHash and help us continue innovating social media tools"
+        keywords="support ViralHash, contribute, social media innovation"
+      />
+      
+      <PageHeader 
+        tag="Support Our Mission"
+        title="Help ViralHash Grow"
+        description="Your support helps us continue developing innovative tools for content creators"
+        tagColor="pink"
+      />
+
       <h1 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-violet-500 via-purple-500 to-blue-600 bg-clip-text text-transparent">
         About the Creator
       </h1>

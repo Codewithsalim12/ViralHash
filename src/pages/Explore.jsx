@@ -171,46 +171,58 @@ export default function Explore() {
         keywords="hashtag categories, trending hashtags"
       />
       
-      {/* Hashtag Categories Section */}
-      <div className="text-center mb-12">
-        <h1 className="text-5xl font-extrabold text-gray-900 mb-4">
-          Hashtag Explorer
-        </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Discover trending hashtags tailored to your content niche
-        </p>
+      {/* Page Header Section */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-block bg-blue-50 rounded-full px-4 py-2 mb-4">
+            <span className="text-xs sm:text-sm font-medium text-blue-600">
+              Discover Trending Hashtags
+            </span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+            Hashtag Explorer
+          </h1>
+          <p className="text-sm sm:text-base lg:text-xl text-gray-600 max-w-2xl mx-auto">
+            Unlock the power of trending hashtags and elevate your social media content strategy
+          </p>
+        </div>
       </div>
 
-      <div className="flex justify-center space-x-4 mb-12">
+      <div className="flex flex-wrap justify-center gap-4 mb-12 px-4 sm:px-6">
         {categories.map((category) => (
           <button
             key={category.name}
             onClick={() => setActiveCategory(category.name)}
             className={`
-              flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300
+              flex items-center space-x-2 
+              px-3 py-2 sm:px-4 sm:py-2 
+              rounded-lg 
+              transition-all duration-300 
+              text-sm sm:text-base
+              focus:outline-none focus:ring-2 focus:ring-offset-2
               ${activeCategory === category.name 
                 ? `${category.color} text-white` 
                 : 'bg-white text-gray-700 hover:bg-gray-100 shadow-md'}
             `}
           >
-            <span className="text-xl">{category.icon}</span>
-            <span>{category.title}</span>
+            <span className="text-base sm:text-xl">{category.icon}</span>
+            <span className="hidden sm:inline">{category.title}</span>
           </button>
         ))}
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-16 px-4 sm:px-6">
         {filteredHashtags.map((hashtag) => (
           <div 
             key={hashtag.tag}
-            className="bg-white rounded-xl shadow-lg p-6"
+            className="bg-white rounded-xl shadow-lg p-4 sm:p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
           >
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-3xl font-bold text-blue-600">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+              <span className="text-2xl sm:text-3xl font-bold text-blue-600 mb-2 sm:mb-0">
                 {hashtag.tag}
               </span>
               <span className={`
-                px-3 py-1 rounded-full text-xs font-semibold
+                px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-semibold
                 ${hashtag.popularity === 'Very High' 
                   ? 'bg-green-100 text-green-800' 
                   : hashtag.popularity === 'High' 
@@ -220,14 +232,22 @@ export default function Explore() {
                 {hashtag.popularity}
               </span>
             </div>
-            <p className="text-sm mb-4 text-gray-600">
+            <p className="text-xs sm:text-sm mb-4 text-gray-600">
               {hashtag.description}
             </p>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0">
               <div className="flex items-center space-x-2">
-                <span className="text-sm font-medium text-gray-600">Platform:</span>
-                <span className="font-bold text-gray-900">{hashtag.platform}</span>
+                <span className="text-xs sm:text-sm font-medium text-gray-600">Platform:</span>
+                <span className="text-sm sm:text-base font-bold text-gray-900">{hashtag.platform}</span>
               </div>
+              <button className="
+                mt-2 sm:mt-0 px-3 py-1 text-xs sm:text-sm
+                bg-blue-50 text-blue-600 
+                rounded-full hover:bg-blue-100 
+                transition-colors font-semibold
+              ">
+                Copy Hashtag
+              </button>
             </div>
           </div>
         ))}
