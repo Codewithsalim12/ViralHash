@@ -166,7 +166,7 @@ export default function Explore() {
   return (
     <div className="container mx-auto px-4 py-12 bg-gray-50">
       <SEO 
-        title="Explore Hashtag Categories | HashGen"
+        title="Explore Hashtag Categories | ViralHash"
         description="Discover trending hashtags across different categories."
         keywords="hashtag categories, trending hashtags"
       />

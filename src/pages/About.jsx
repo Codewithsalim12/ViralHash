@@ -28,8 +28,8 @@ export default function About() {
   return (
     <>
       <SEO 
-        title="About HashGen - Your Social Media Hashtag Companion"
-        description="Learn about HashGen, the innovative hashtag generator that helps content creators maximize their social media reach and engagement."
+        title="About ViralHash - Your Social Media Hashtag Companion"
+        description="Learn about ViralHash, the innovative hashtag generator that helps content creators maximize their social media reach and engagement."
         keywords="hashtag generator, social media tools, content creation, hashtag strategy, Instagram hashtags, YouTube hashtags, TikTok hashtags"
       />
       <div className="relative min-h-screen">
@@ -45,7 +45,7 @@ export default function About() {
               Empowering Content Creators
             </h1>
             <p className="text-xl mb-12 text-gray-200">
-              HashGen is your ultimate companion in navigating the complex world of social media hashtags. We help content creators maximize their reach and engagement across multiple platforms.
+              ViralHash is your ultimate companion in navigating the complex world of social media hashtags. We help content creators maximize their reach and engagement across multiple platforms.
             </p>
             
             <div className="grid md:grid-cols-2 gap-8 mb-16">

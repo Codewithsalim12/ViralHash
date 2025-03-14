@@ -15,7 +15,7 @@ export default function Navbar() {
                 <span className="text-white font-bold text-2xl select-none">#</span>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-violet-500 via-purple-500 to-blue-600 bg-clip-text text-transparent">
-                HashGen
+                ViralHash
               </span>
             </Link>
           </div>

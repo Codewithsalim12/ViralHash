@@ -1,9 +1,9 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "HashGen",
-  "url": "https://hashgen-ruddy.vercel.app/",
-  "description": "Discover, generate, and analyze the best hashtags for social media content across Instagram, TikTok, and YouTube",
+  "name": "ViralHash",
+  "url": "https://viralhash.vercel.app/",
+  "description": "Discover, generate, and analyze the best hashtags for your social media content. Boost your engagement and reach across Instagram, TikTok, and YouTube",
   "applicationCategory": "Social Media Tools",
   "operatingSystem": "Web Browser",
   "offers": {
@@ -19,7 +19,7 @@
   ],
   "creator": {
     "@type": "Organization",
-    "name": "HashGen Development Team",
-    "url": "https://hashgen-ruddy.vercel.app/"
+    "name": "ViralHash Development Team",
+    "url": "https://viralhash.vercel.app/"
   }
 }

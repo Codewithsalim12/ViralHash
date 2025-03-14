@@ -2,11 +2,11 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 
 const SEO = ({ 
-  title = 'HashGen | Hashtag Generator & Insights', 
+  title = 'ViralHash | Hashtag Generator & Insights', 
   description = 'Discover, generate, and analyze the best hashtags for your social media content. Boost your engagement and reach across Instagram, TikTok, and YouTube.',
   keywords = 'hashtag generator, social media hashtags, content creation, viral hashtags, Instagram hashtags, TikTok hashtags, YouTube hashtags',
   image = '/og-image.png',
-  url = 'https://hashgen-ruddy.vercel.app/'
+  url = 'https://viralhash.vercel.app/'
 }) => {
   return (
     <Helmet>

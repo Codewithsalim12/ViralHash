@@ -97,7 +97,7 @@ export default function Generator() {
   return (
     <>
       <SEO 
-        title="HashGen - Free Hashtag Generator for Social Media"
+        title="ViralHash - Free Hashtag Generator for Social Media"
         description="Generate the perfect hashtags for Instagram, YouTube, and TikTok. Boost your social media reach with our intelligent hashtag generator tool."
         keywords="hashtag generator, social media hashtags, Instagram hashtags, YouTube hashtags, TikTok hashtags, content strategy, viral content"
       />

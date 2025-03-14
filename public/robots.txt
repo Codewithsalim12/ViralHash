@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hashgen-ruddy.vercel.app/sitemap.xml
+Sitemap: https://viralhash.vercel.app/sitemap.xml
 
 # Directories to exclude
 Disallow: /private/

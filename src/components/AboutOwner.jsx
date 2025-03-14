@@ -14,14 +14,14 @@ export default function AboutOwner() {
           <h2 className="text-2xl font-bold bg-gradient-to-r from-violet-500 via-purple-500 to-blue-600 bg-clip-text text-transparent">
             Mohammad Salim
           </h2>
-          <p className="text-gray-600">Full Stack Developer & HashGen Creator</p>
+          <p className="text-gray-600">Full Stack Developer & ViralHash Creator</p>
         </div>
       </div>
 
       <div className="prose prose-sm text-gray-600 mb-6">
         <p>
           Hi! I'm Mohammad Salim, a passionate developer dedicated to creating useful tools for the
-          social media community. HashGen is one of my projects aimed at helping content creators
+          social media community. ViralHash is one of my projects aimed at helping content creators
           optimize their social media presence.
         </p>
       </div>
