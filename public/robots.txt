@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hashgen.onrender.com/sitemap.xml
+
+# Directories to exclude
+Disallow: /private/
+Disallow: /admin/
+
+# Specific file exclusions
+Disallow: /404.html
+Disallow: /500.html
+
+# Crawl-delay to be respectful to search engines
+Crawl-delay: 10
